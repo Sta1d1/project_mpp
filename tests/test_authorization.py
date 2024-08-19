@@ -1,6 +1,5 @@
 """Тестирование страницы <Авторизация>"""
 import time
-import pyautogui
 import allure
 from selenium.webdriver import Remote
 from selenium.webdriver.common.by import By
@@ -14,30 +13,35 @@ from src.methods.base_methods import BaseMethods as BM
 from src.pages.authorization_page import AuthorizationPage as AP
 from src.pages.fault_tolerance import fault_tolerance as FT
 
-
+@allure.feature("Авторизация")
+@allure.story('Авторизовация и выход')
 def test_base_authorization(browser: Remote):
-    """Авторизация и выход"""
     AP(browser=browser).authorization()
     AP(browser=browser).logout_base_account()
 
+@allure.feature("Авторизация")
+@allure.story('Авторизация с некорректным логином')
 def test_authorization_with_incorrect_login(browser: Remote):
-    """Авторизация с некорректным логином"""
     AP(browser=browser).authorization_with_incorrect_login()
 
+@allure.feature("Авторизация")
+@allure.story('Авторизация с некорректным паролем')
 def test_authorization_with_incorrect_password(browser: Remote):
-    """Авторизация с некорректным паролем"""
     AP(browser=browser).authorization_with_incorrect_password()
 
+@allure.feature("Авторизация")
+@allure.story('Авторизация с некорректными данными')
 def test_authorization_with_incorrect_all_data(browser: Remote):
-    """Авторизация с некорректными данными"""
     AP(browser=browser).authorization_with_incorrect_all_data()
 
+@allure.feature("Авторизация")
+@allure.story('Авторизация с последующим логаутом через профиль')
 def test_authorization_and_exit_via_profile(browser: Remote):
-    """Авторизация с последующим логаутом через профиль"""
     AP(browser=browser).authorization()
     AP(browser=browser).authorization_and_exit_via_profile()
 
+@allure.feature("Авторизация")
+@allure.story('Авторизация под администратором отказоустойчивости и выход')
 def test_authorization_for_administrator_fault_tolerance(browser: Remote):
-    """Авторизация под администратором отказоустойчивости и выход"""
     FT(browser=browser).authorization_for_administrator_fault_tolerance()
     AP(browser=browser).logout_base_account()
