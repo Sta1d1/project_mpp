@@ -1,7 +1,6 @@
 """Страница Настроек"""
 # Библиотеки
 import time
-import pyautogui
 from selenium.webdriver import Remote
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.alert import Alert
@@ -123,18 +122,13 @@ class system_settings:
         BM(browser=self.browser).click_on_the_element(selector=self.system_technical_item) # Переход к Техническим настройкам
         # Редактирование настроек
         BM(browser=self.browser).enter_text_in_the_element(selector=self.configuration_control_intermediate_path, input_text='test/opt/mpp/files') # Редактирование настройки "Промежуточное хранилище"
-        BM(browser=self.browser).click_on_the_element(selector=self.configuration_control_log_level) # Раскрываю уровень логгирования
-        BM(browser=self.browser).click_on_the_element(selector='//*[@id="configuration-control-log.level-option-2"]') # Выбираю "INFO"
         BM(browser=self.browser).click_on_the_element(selector=self.system_configuration_save_button) # Сохраняю измененные настройки
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value=self.allert_save_text) # Проверяю аллерт
         # Обновляю страницу и проверяю измененные элементы
         BM(browser=self.browser).page_reload() # Обновляю страницу
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.configuration_control_intermediate_path, second_value='test/opt/mpp/files', atribut='value')
-        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.configuration_control_log_level, second_value='INFO', atribut='value')
         # Возвращаю стандартные настройки
         BM(browser=self.browser).enter_text_in_the_element(selector=self.configuration_control_intermediate_path, input_text='/opt/mpp/files') # Редактирование настройки "Промежуточное хранилище"
-        BM(browser=self.browser).click_on_the_element(selector=self.configuration_control_log_level) # Раскрываю уровень логгирования
-        BM(browser=self.browser).click_on_the_element(selector='//*[@id="configuration-control-log.level-option-3"]') # Выбираю "DEBUG"
         BM(browser=self.browser).click_on_the_element(selector=self.system_configuration_save_button) # Сохраняю измененные настройки
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value=self.allert_save_text) # Проверяю аллерт
     
@@ -152,8 +146,6 @@ class system_settings:
         BM(browser=self.browser).enter_text_in_the_element(selector=self.receiving_supplies_configuration_control_mail_input_user, input_text='testinbox_mpp@star.lanit.ru') # Редактирование настройки "Имя пользователя почтового сервера"
         BM(browser=self.browser).click_on_the_element_no_roll(selector=self.receiving_supplies_configuration_control_mail_input_proto) # Раскрытие настройки "Протокол почтового сервера"
         BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-mail.input.proto-option-0"]') # Выбор протокола imap
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.receiving_supplies_configuration_control_log_level_receiver_menu) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-2"]') # Выбор протокола INFO
         BM(browser=self.browser).enter_text_in_the_element(selector=self.receiving_supplies_configuration_control_mail_input_read_timer, input_text='123') # Редактирование настройки "Таймер чтения"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.receiving_supplies_configuration_control_regexp_determine_supply_developer, input_text='test^[^_]*_(?<developer>[^_^\-]*).*_.*$') # Редактирование настройки "Фильтр разработчика"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.receiving_supplies_configuration_control_regexp_determine_supply_snapshot, input_text='test[^_]+_[^_]+_(?<snapshot>.*)$') # Редактирование настройки "Фильтр снапшота"
@@ -171,7 +163,6 @@ class system_settings:
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.receiving_supplies_configuration_control_mail_input_port, second_value='123', atribut='value')# Проверяю "Порт почтового сервера"
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.receiving_supplies_configuration_control_mail_input_user, second_value='testinbox_mpp@star.lanit.ru', atribut='value')# Проверяю "Имя пользователя почтового сервера"
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.receiving_supplies_configuration_control_mail_input_proto, second_value='imap', atribut='value')# Проверяю "Протокол почтового сервера"
-        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.receiving_supplies_configuration_control_log_level_receiver_menu, second_value='INFO', atribut='value')# Проверяю "Уровень логирования"
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.receiving_supplies_configuration_control_mail_input_read_timer, second_value='123', atribut='value')# Проверяю "Таймер чтения"
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.receiving_supplies_configuration_control_regexp_determine_supply_developer, second_value='test^[^_]*_(?<developer>[^_^\-]*).*_.*$', atribut='value')# Проверяю "Фильтр разработчика"
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.receiving_supplies_configuration_control_regexp_determine_supply_snapshot, second_value='test[^_]+_[^_]+_(?<snapshot>.*)$', atribut='value')# Проверяю "Фильтр снапшота"
@@ -186,8 +177,6 @@ class system_settings:
         BM(browser=self.browser).enter_text_in_the_element(selector=self.receiving_supplies_configuration_control_mail_input_user, input_text='inbox_mpp@star.lanit.ru') # Редактирование настройки "Имя пользователя почтового сервера"
         BM(browser=self.browser).click_on_the_element_no_roll(selector=self.receiving_supplies_configuration_control_mail_input_proto) # Раскрытие настройки "Протокол почтового сервера"
         BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-mail.input.proto-option-1"]') # Выбор протокола pop3
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.receiving_supplies_configuration_control_log_level_receiver_menu) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-3"]') # Выбор протокола DEBUG
         BM(browser=self.browser).enter_text_in_the_element(selector=self.receiving_supplies_configuration_control_mail_input_read_timer, input_text='60') # Редактирование настройки "Таймер чтения"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.receiving_supplies_configuration_control_regexp_determine_supply_developer, input_text='^[^_]*_(?<developer>[^_^\-]*).*_.*$') # Редактирование настройки "Фильтр разработчика"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.receiving_supplies_configuration_control_regexp_determine_supply_snapshot, input_text='[^_]+_[^_]+_(?<snapshot>.*)$') # Редактирование настройки "Фильтр снапшота"
@@ -204,8 +193,6 @@ class system_settings:
         BM(browser=self.browser).enter_text_in_the_element(selector=self.crypto_configuration_control_decryption_ip, input_text='0.0.0.0') # Редактирование настройки "Сетевое имя (или IP адрес) сервера Янтарь"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.crypto_configuration_control_decryption_port, input_text='111') # Редактирование настройки "Порт Янтарь"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.crypto_configuration_control_decryption_cert_my, input_text='testuser228') # Редактирование настройки "Имя сессии Янтарь"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.crypto_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-2"]') # Выбор протокола INFO
         BM(browser=self.browser).click_on_the_element(selector=self.system_configuration_save_button) # Сохраняю измененные настройки
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value=self.allert_save_text) # Проверяю аллерт
         # Обновляю страницу и проверяю измененные элементы
@@ -215,14 +202,11 @@ class system_settings:
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.crypto_configuration_control_decryption_ip, second_value='0.0.0.0', atribut='value') # Проверяю "Сетевое имя (или IP адрес) сервера Янтарь"
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.crypto_configuration_control_decryption_port, second_value='111', atribut='value') # Проверяю "Порт Янтарь"
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.crypto_configuration_control_decryption_cert_my, second_value='testuser228', atribut='value') # Проверяю "Имя сессии Янтарь"
-        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.crypto_configuration_control_log_level, second_value='INFO', atribut='value') # Проверяю "Уровень логирования"
         # Возвращаю стандартные настройки
         BM(browser=self.browser).enter_text_in_the_element(selector=self.crypto_configuration_control_mq_queue_name, input_text='crypto') # Редактирование настройки "Очередь модуля Криптографической обработки данных"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.crypto_configuration_control_decryption_ip, input_text='172.29.39.42') # Редактирование настройки "Сетевое имя (или IP адрес) сервера Янтарь"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.crypto_configuration_control_decryption_port, input_text='1333') # Редактирование настройки "Порт Янтарь"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.crypto_configuration_control_decryption_cert_my, input_text='user001') # Редактирование настройки "Имя сессии Янтарь"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.crypto_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-3"]') # Выбор протокола DEBUG
         BM(browser=self.browser).click_on_the_element(selector=self.system_configuration_save_button) # Сохраняю измененные настройки
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value=self.allert_save_text) # Проверяю аллерт
 
@@ -232,19 +216,14 @@ class system_settings:
         BM(browser=self.browser).click_on_the_element(selector=self.unzip_menu_item) # Переход к Распаковки поставок
         # Редактирование настроек
         BM(browser=self.browser).enter_text_in_the_element(selector=self.unzip_configuration_control_mq_queue_name, input_text='testunzip') # Редактирование настройки "Очередь модуля Распаковки поставок"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.unzip_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-2"]') # Выбор протокола INFO
         BM(browser=self.browser).click_on_the_element(selector=self.system_configuration_save_button) # Сохраняю измененные настройки
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value=self.allert_save_text) # Проверяю аллерт
         # Обновляю страницу и проверяю измененные элементы
         BM(browser=self.browser).page_reload() # Обновляю страницу
         BM(browser=self.browser).checking_the_presence_of_an_element_on_the_page(selector=self.system_menu_item)
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.unzip_configuration_control_mq_queue_name, second_value='testunzip', atribut='value') # Проверяю "Очередь модуля Распаковки поставок"
-        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.unzip_configuration_control_log_level, second_value='INFO', atribut='value') # Проверяю "Уровень логирования"
         # Возвращаю стандартные настройки
         BM(browser=self.browser).enter_text_in_the_element(selector=self.unzip_configuration_control_mq_queue_name, input_text='unzip') # Редактирование настройки "Очередь модуля Распаковки поставок"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.unzip_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-3"]') # Выбор протокола DEBUG
         BM(browser=self.browser).click_on_the_element(selector=self.system_configuration_save_button) # Сохраняю измененные настройки
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value=self.allert_save_text) # Проверяю аллерт
     
@@ -254,19 +233,14 @@ class system_settings:
         BM(browser=self.browser).click_on_the_element(selector=self.validator_menu_item) # Переход к Валидация поставок
         # Редактирование настроек
         BM(browser=self.browser).enter_text_in_the_element(selector=self.validator_configuration_control_mq_queue_name, input_text='testvalidation') # Редактирование настройки "Очередь модуля Валидации данных"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.validator_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-2"]') # Выбор протокола INFO
         BM(browser=self.browser).click_on_the_element(selector=self.system_configuration_save_button) # Сохраняю измененные настройки
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value=self.allert_save_text) # Проверяю аллерт
         # Обновляю страницу и проверяю измененные элементы
         BM(browser=self.browser).page_reload() # Обновляю страницу
         BM(browser=self.browser).checking_the_presence_of_an_element_on_the_page(selector=self.system_menu_item)
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.validator_configuration_control_mq_queue_name, second_value='testvalidation', atribut='value') # Проверяю "Очередь модуля Валидации данных"
-        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.validator_configuration_control_log_level, second_value='INFO', atribut='value') # Проверяю "Уровень логирования"
         # Возвращаю стандартные настройки
         BM(browser=self.browser).enter_text_in_the_element(selector=self.validator_configuration_control_mq_queue_name, input_text='validation') # Редактирование настройки "Очередь модуля Валидации данных"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.validator_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-3"]') # Выбор протокола DEBUG
         BM(browser=self.browser).click_on_the_element(selector=self.system_configuration_save_button) # Сохраняю измененные настройки
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value=self.allert_save_text) # Проверяю аллерт
 
@@ -279,8 +253,6 @@ class system_settings:
         BM(browser=self.browser).enter_text_in_the_element(selector=self.antivir_configuration_control_antivir_command_check, input_text='testkesl-control') # Редактирование настройки "Команда проверки наличия антивируса"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.antivir_configuration_control_antivir_command_scan, input_text='testkesl-control --scan-file') # Редактирование настройки "Команда сканирования антивирусом"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.antivir_configuration_control_mq_queue_name, input_text='testantivir') # Редактирование настройки "Очередь модуля Антивирусной проверки"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.antivir_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-2"]') # Выбор протокола INFO
         BM(browser=self.browser).click_on_the_element(selector=self.system_configuration_save_button) # Сохраняю измененные настройки
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value=self.allert_save_text) # Проверяю аллерт
         # Обновляю страницу и проверяю измененные элементы
@@ -290,14 +262,11 @@ class system_settings:
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.antivir_configuration_control_antivir_command_check, second_value='testkesl-control', atribut='value') # Проверяю "Команда проверки наличия антивируса"
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.antivir_configuration_control_antivir_command_scan, second_value='testkesl-control --scan-file', atribut='value') # Проверяю "Команда сканирования антивирусом"
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.antivir_configuration_control_mq_queue_name, second_value='testantivir', atribut='value') # Проверяю "Очередь модуля Антивирусной проверки"
-        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.antivir_configuration_control_log_level, second_value='INFO', atribut='value') # Проверяю "Уровень логирования"
         # Возвращаю стандартные настройки
         BM(browser=self.browser).enter_text_in_the_element(selector=self.antivir_configuration_control_antivir_regexp, input_text='Total.detected.(objects|)[\s]+:[\s]+(?<count>[0-9]+)') # Редактирование настройки "Фильтр результата работы Антивируса"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.antivir_configuration_control_antivir_command_check, input_text='kesl-control') # Редактирование настройки "Команда проверки наличия антивируса"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.antivir_configuration_control_antivir_command_scan, input_text='kesl-control --scan-file') # Редактирование настройки "Команда сканирования антивирусом"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.antivir_configuration_control_mq_queue_name, input_text='antivir') # Редактирование настройки "Очередь модуля Антивирусной проверки"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.antivir_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-3"]') # Выбор протокола DEBUG
         BM(browser=self.browser).click_on_the_element(selector=self.system_configuration_save_button) # Сохраняю измененные настройки
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value=self.allert_save_text) # Проверяю аллерт
 
@@ -307,19 +276,14 @@ class system_settings:
         BM(browser=self.browser).click_on_the_element(selector=self.checksum_menu_item) # Переход к Расчет контрольных сумм
         # Редактирование настроек
         BM(browser=self.browser).enter_text_in_the_element(selector=self.checksum_configuration_control_mq_queue_name, input_text='testchecksum') # Редактирование настройки "Очередь модуля Расчета контрольных сумм"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.checksum_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-2"]') # Выбор протокола INFO
         BM(browser=self.browser).click_on_the_element(selector=self.system_configuration_save_button) # Сохраняю измененные настройки
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value=self.allert_save_text) # Проверяю аллерт
         # Обновляю страницу и проверяю измененные элементы
         BM(browser=self.browser).page_reload() # Обновляю страницу
         BM(browser=self.browser).checking_the_presence_of_an_element_on_the_page(selector=self.system_menu_item)
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.checksum_configuration_control_mq_queue_name, second_value='testchecksum', atribut='value') # Проверяю "Очередь модуля Расчета контрольных сумм"
-        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.checksum_configuration_control_log_level, second_value='INFO', atribut='value') # Проверяю "Уровень логирования"
         # Возвращаю стандартные настройки
         BM(browser=self.browser).enter_text_in_the_element(selector=self.checksum_configuration_control_mq_queue_name, input_text='checksum') # Редактирование настройки "Очередь модуля Расчета контрольных сумм"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.checksum_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-3"]') # Выбор протокола DEBUG
         BM(browser=self.browser).click_on_the_element(selector=self.system_configuration_save_button) # Сохраняю измененные настройки
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value=self.allert_save_text) # Проверяю аллерт
 
@@ -329,19 +293,14 @@ class system_settings:
         BM(browser=self.browser).click_on_the_element(selector=self.publisher_menu_item) # Переход к Публикация данных
         # Редактирование настроек
         BM(browser=self.browser).enter_text_in_the_element(selector=self.publisher_configuration_control_mq_queue_name, input_text='testpublisher') # Редактирование настройки "Очередь модуля Публикации данных"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.publisher_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-2"]') # Выбор протокола INFO
         BM(browser=self.browser).click_on_the_element(selector=self.system_configuration_save_button) # Сохраняю измененные настройки
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value=self.allert_save_text) # Проверяю аллерт
         # Обновляю страницу и проверяю измененные элементы
         BM(browser=self.browser).page_reload() # Обновляю страницу
         BM(browser=self.browser).checking_the_presence_of_an_element_on_the_page(selector=self.system_menu_item)
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.publisher_configuration_control_mq_queue_name, second_value='testpublisher', atribut='value') # Проверяю Очередь модуля Публикации данных"
-        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.publisher_configuration_control_log_level, second_value='INFO', atribut='value') # Проверяю "Уровень логирования"
         # Возвращаю стандартные настройки
         BM(browser=self.browser).enter_text_in_the_element(selector=self.publisher_configuration_control_mq_queue_name, input_text='publisher') # Редактирование настройки "Очередь модуля Публикации данных"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.publisher_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-3"]') # Выбор протокола DEBUG
         BM(browser=self.browser).click_on_the_element(selector=self.system_configuration_save_button) # Сохраняю измененные настройки
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value=self.allert_save_text) # Проверяю аллерт
 
@@ -351,8 +310,6 @@ class system_settings:
         BM(browser=self.browser).click_on_the_element(selector=self.cleaner_menu_item) # Переход к Очистка каталога поставок
         # Редактирование настроек
         BM(browser=self.browser).enter_text_in_the_element(selector=self.cleaner_configuration_control_mq_queue_name, input_text='testcleaner') # Редактирование настройки "Очередь модуля Очистки каталога поставок"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.cleaner_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-2"]') # Выбор протокола INFO
         BM(browser=self.browser).enter_text_in_the_element(selector=self.cleaner_configuration_control_supply_storage_time, input_text='111') # Редактирование настройки "Время хранения поставок"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.cleaner_configuration_control_period_of_check, input_text='111') # Редактирование настройки "Период запуска очистки"
         BM(browser=self.browser).click_on_the_element(selector=self.system_configuration_save_button) # Сохраняю измененные настройки
@@ -361,13 +318,10 @@ class system_settings:
         BM(browser=self.browser).page_reload() # Обновляю страницу
         BM(browser=self.browser).checking_the_presence_of_an_element_on_the_page(selector=self.system_menu_item)
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.cleaner_configuration_control_mq_queue_name, second_value='testcleaner', atribut='value') # Проверяю "Очередь модуля Очистки каталога поставок"
-        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.cleaner_configuration_control_log_level, second_value='INFO', atribut='value') # Проверяю "Уровень логирования"
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.cleaner_configuration_control_supply_storage_time, second_value='111', atribut='value') # Проверяю "Время хранения поставок"
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.cleaner_configuration_control_period_of_check, second_value='111', atribut='value') # Проверяю "Период запуска очистки"
         # Возвращаю стандартные настройки
         BM(browser=self.browser).enter_text_in_the_element(selector=self.cleaner_configuration_control_mq_queue_name, input_text='cleaner') # Редактирование настройки "Очередь модуля Очистки каталога поставок"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.cleaner_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-3"]') # Выбор протокола INFO
         BM(browser=self.browser).enter_text_in_the_element(selector=self.cleaner_configuration_control_supply_storage_time, input_text='7') # Редактирование настройки "Время хранения поставок"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.cleaner_configuration_control_period_of_check, input_text='6') # Редактирование настройки "Период запуска очистки"
         BM(browser=self.browser).click_on_the_element(selector=self.system_configuration_save_button) # Сохраняю измененные настройки
@@ -379,8 +333,6 @@ class system_settings:
         BM(browser=self.browser).click_on_the_element(selector=self.api_menu_item) # Переход к API
         # Редактирование настроек
         BM(browser=self.browser).enter_text_in_the_element(selector=self.api_configuration_control_mq_queue_name, input_text='testapi') # Редактирование настройки "Очередь модуля API веб-интерфейса"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.api_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-2"]') # Выбор протокола INFO
         BM(browser=self.browser).enter_text_in_the_element(selector=self.api_configuration_control_ldap_user_dn, input_text='testdc=vip,dc=cbr,dc=ru') # Редактирование настройки "Верхняя запись LDAP для поиска пользователей"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.api_configuration_control_ldap_group_dn, input_text='testOU=МЗП,OU=УТС,OU=ДИТ,DC=vip,DC=cbr,DC=ru') # Редактирование настройки "Верхняя запись LDAP для поиска групп"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.api_configuration_control_ldap_group_roles_filter, input_text='test(&(objectClass=group)(!(memberOf=CN=Релиз менеджер,OU=МПП,OU=УТС,OU=ДИТ,DC=vip,DC=cbr,DC=ru)))') # Редактирование настройки "Фильтр поиска LDAP групп для ролей МПП"
@@ -396,7 +348,6 @@ class system_settings:
         BM(browser=self.browser).page_reload() # Обновляю страницу
         BM(browser=self.browser).checking_the_presence_of_an_element_on_the_page(selector=self.system_menu_item)
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.api_configuration_control_mq_queue_name, second_value='testapi', atribut='value') # Проверяю "Очередь модуля API веб-интерфейса"
-        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.api_configuration_control_log_level, second_value='INFO', atribut='value') # Проверяю "Уровень логирования"
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.api_configuration_control_ldap_user_dn, second_value='testdc=vip,dc=cbr,dc=ru', atribut='value') # Проверяю "Верхняя запись LDAP для поиска пользователей"
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.api_configuration_control_ldap_group_dn, second_value='testOU=МЗП,OU=УТС,OU=ДИТ,DC=vip,DC=cbr,DC=ru', atribut='value') # Проверяю "Верхняя запись LDAP для поиска групп"
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.api_configuration_control_ldap_group_roles_filter, second_value='test(&(objectClass=group)(!(memberOf=CN=Релиз менеджер,OU=МПП,OU=УТС,OU=ДИТ,DC=vip,DC=cbr,DC=ru)))', atribut='value') # Проверяю "Фильтр поиска LDAP групп для ролей МПП"
@@ -407,8 +358,6 @@ class system_settings:
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.api_configuration_control_ldap_port, second_value='1111', atribut='value') # Проверяю "Порт сервера LDAP"
         # Возвращаю стандартные настройки
         BM(browser=self.browser).enter_text_in_the_element(selector=self.api_configuration_control_mq_queue_name, input_text='api') # Редактирование настройки "Очередь модуля API веб-интерфейса"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.api_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-3"]') # Выбор протокола DEBUG
         BM(browser=self.browser).enter_text_in_the_element(selector=self.api_configuration_control_ldap_user_dn, input_text='dc=vip,dc=cbr,dc=ru') # Редактирование настройки "Верхняя запись LDAP для поиска пользователей"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.api_configuration_control_ldap_group_dn, input_text='OU=МЗП,OU=УТС,OU=ДИТ,DC=vip,DC=cbr,DC=ru') # Редактирование настройки "Верхняя запись LDAP для поиска групп"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.api_configuration_control_ldap_group_roles_filter, input_text='(&(objectClass=group)(!(memberOf=CN=Релиз менеджер,OU=МПП,OU=УТС,OU=ДИТ,DC=vip,DC=cbr,DC=ru)))') # Редактирование настройки "Фильтр поиска LDAP групп для ролей МПП"
@@ -427,8 +376,6 @@ class system_settings:
         BM(browser=self.browser).click_on_the_element(selector=self.notification_menu_item) # Переход к API
         # Редактирование настроек
         BM(browser=self.browser).enter_text_in_the_element(selector=self.notification_configuration_control_mq_queue_name, input_text='testnotification') # Редактирование настройки "Очередь модуля"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.notification_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-2"]') # Выбор протокола INFO
         BM(browser=self.browser).enter_text_in_the_element(selector=self.notification_configuration_control_mail_output_fromaddress, input_text='testinbox_mpp@star.lanit.ru') # Редактирование настройки "Адрес, от кого отправляется письмо"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.notification_configuration_control_mail_output_host, input_text='testmail.star.lanit.ru') # Редактирование настройки "Хост почтового сервера для отправки писем"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.notification_configuration_control_mail_output_port, input_text='111') # Редактирование настройки "Порт почтового сервера для отправки писем"
@@ -441,7 +388,6 @@ class system_settings:
         BM(browser=self.browser).page_reload() # Обновляю страницу
         BM(browser=self.browser).checking_the_presence_of_an_element_on_the_page(selector=self.system_menu_item)
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.notification_configuration_control_mq_queue_name, second_value='testnotification', atribut='value') # Проверяю "Очередь модуля"
-        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.notification_configuration_control_log_level, second_value='INFO', atribut='value') # Проверяю "Уровень логирования"
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.notification_configuration_control_mail_output_fromaddress, second_value='testinbox_mpp@star.lanit.ru', atribut='value') # Проверяю ""Адрес, от кого отправляется письмо""
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.notification_configuration_control_mail_output_host, second_value='testmail.star.lanit.ru', atribut='value') # Проверяю "Хост почтового сервера для отправки писем"
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.notification_configuration_control_mail_output_port, second_value='111', atribut='value') # Проверяю "Порт почтового сервера для отправки писем"
@@ -449,8 +395,6 @@ class system_settings:
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.notification_configuration_control_mail_output_strategy, second_value='SMTP_TLS', atribut='value') # Проверяю "Стратегия для отправки писем"
         # Возвращаю стандартные настройки
         BM(browser=self.browser).enter_text_in_the_element(selector=self.notification_configuration_control_mq_queue_name, input_text='notification') # Редактирование настройки "Очередь модуля"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector=self.notification_configuration_control_log_level) # Раскрытие настройки "Уровень логирования"
-        BM(browser=self.browser).click_on_the_element_no_roll(selector='//*[@id="configuration-control-log.level-option-3"]') # Выбор протокола DEBUG
         BM(browser=self.browser).enter_text_in_the_element(selector=self.notification_configuration_control_mail_output_fromaddress, input_text='inbox_mpp@star.lanit.ru') # Редактирование настройки "Адрес, от кого отправляется письмо"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.notification_configuration_control_mail_output_host, input_text='mail.star.lanit.ru') # Редактирование настройки "Хост почтового сервера для отправки писем"
         BM(browser=self.browser).enter_text_in_the_element(selector=self.notification_configuration_control_mail_output_port, input_text='25') # Редактирование настройки "Порт почтового сервера для отправки писем"
@@ -512,8 +456,6 @@ class types_of_publications:
     value_places_of_publication_filter = '^C01_Adm'                                                                                 # Значение Фильтр темы поставки
     value_places_of_publication_user = 'tuser'                                                                                      # Значение Пользователь
     value_places_of_publication_password = 'tpassword'                                                                              # Значение Пароль
-
-
 
     def __init__(self, browser) -> None:
         self.browser = browser
@@ -584,21 +526,132 @@ class types_of_publications:
         BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value=f"Место публикации t{self.value_places_of_publication_name} успешно удалено") # Проверяю аллерт
 
 
-
-
-
-
-
-
-
-
 # -------------------------------------------- Маршруты ---------------------------------------------------
 
 
 # -------------------------------------------- Сервисы ----------------------------------------------------
+class services:
+    # ЭЛЕМЕНТЫ
+    settings_button = '//*[@id="configuration-header-button"]'                                                                      # Кнопка "Настроек"
+    services_buton = '//*[@id="services-menu-item"]'                                                                                # Кнопка "Логирование" на странице настроек
+    stop_button = '//*[@id="services-select-panel-stop-button"]'                                                                    # Кнопка "Остановки" сервиса
+    allert_save_text_xpath = '/html/body/div/div[1]/div/div/div[1]'                                                                 # Поле всплывающего аллерта
+    # ЗНАЧЕНИЯ
+    stop_service_text = "Остановлен"                                                                                                # Значение остановленного текста   
+
+    def __init__(self, browser) -> None:
+        self.browser = browser
+
+    def go_to_services_page(self):
+        BM(browser=self.browser).click_on_the_element(selector=self.settings_button) # Нажимаю кнопку "Настройки"
+        BM(browser=self.browser).click_on_the_element(selector=self.services_buton) # Нажимаю кнопку "Логирование"
+    
+    def disabling_and_enabling_services(self, service_check, xpath_stop_service, xpath_start_service):
+        """Отключение и включение каждого сервиса"""
+        BM(browser=self.browser).click_on_the_element(selector=service_check) # Выбираю сервис
+        BM(browser=self.browser).click_on_the_element(selector=self.stop_button) # Останавливаю сервис
+        BM(browser=self.browser).checking_the_presence_of_an_element_on_the_page(selector=self.allert_save_text_xpath, wait_time=20) # Проверяю аллерт
+        BM(browser=self.browser).page_reload() # Обновление страницы
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=xpath_stop_service, second_value=self.stop_service_text) # Проверяю что сервис остановлен
+        BM(browser=self.browser).click_on_the_element(selector=xpath_start_service) # Запускаю сервис
+        BM(browser=self.browser).checking_the_presence_of_an_element_on_the_page(selector=self.allert_save_text_xpath, wait_time=20) # Проверяю аллерт
+        BM(browser=self.browser).page_reload() # Обновление страницы
+
+
+
 
 
 # -------------------------------------------- Логирование ------------------------------------------------
+class logging:
+    # ЭЛЕМЕНТЫ
+    settings_button = '//*[@id="configuration-header-button"]'                                                                      # Кнопка "Настроек"
+    logging_buton = '//*[@id="logging-configuration-menu-item"]'                                                                    # Кнопка "Логирование" на странице настроек
+    receiver_module_setting_button = '//*[@id="receiver-module-setting-button"]'                                                    # Кнопка раскрытия модуля "Получение поставок"
+    decryption_module_setting_button = '//*[@id="decryption-module-setting-button"]'                                                # Кнопка раскрытия модуля "Криптографическая обработка данных"
+    unzip_module_setting_button = '//*[@id="unzip-module-setting-button"]'                                                          # Кнопка раскрытия модуля "Распаковки поставок"
+    validator_module_setting_button = '//*[@id="validator-module-setting-button"]'                                                  # Кнопка раскрытия модуля "Валидация файлов"
+    antivir_module_setting_button = '//*[@id="antivir-module-setting-button"]'                                                      # Кнопка раскрытия модуля "Антивирусная проверка"
+    checkSum_module_setting_button = '//*[@id="checkSum-module-setting-button"]'                                                    # Кнопка раскрытия модуля "Расчет контрольных сумм"
+    publisher_module_setting_button = '//*[@id="publisher-module-setting-button"]'                                                  # Кнопка раскрытия модуля "Публикация данных"
+    cleaner_module_setting_button = '//*[@id="cleaner-module-setting-button"]'                                                      # Кнопка раскрытия модуля "Очистка каталога поставок"
+    api_module_setting_button = '//*[@id="api-module-setting-button"]'                                                              # Кнопка раскрытия модуля "API"
+    notification_module_setting_button = '//*[@id="notification-module-setting-button"]'                                            # Кнопка раскрытия модуля "Уведомления"
+    type_warning = '//*[@id="WARNING-logging-setting-menu-item"]'                                                                   # Тип WARNING
+    type_debug = '//*[@id="DEBUG-logging-setting-menu-item"]'                                                                       # Тип DEBUG
+    save_button = '//*[text()="Сохранить"]'                                                                                         # Кнопка "Сохранить"
+    cancel_button = '//*[text()="Отменить"]'                                                                                        # Кнопка "Отменить"
+    allert_save_text_xpath = '/html/body/div/div[1]/div/div'                                                                        # Поле всплывающего аллерта
+
+    # ЗНАЧЕНИЯ
+    tetxt_type_warning = 'WARNING'                                                                                                  # Текст варининг уровня логирования
+    tetxt_type_debug = 'DEBUG'                                                                                                      # Текст дебаг уровня логирования
+
+    def __init__(self, browser) -> None:
+        self.browser = browser
+
+    def go_to_logging_page(self):
+        BM(browser=self.browser).click_on_the_element(selector=self.settings_button) # Нажимаю кнопку "Настройки"
+        BM(browser=self.browser).click_on_the_element(selector=self.logging_buton) # Нажимаю кнопку "Логирование"
+
+    def check_logging(self):
+        """Изменение настроек логирования и их проверка"""
+        # Перевожу все модули в "Warning"
+        BM(browser=self.browser).click_on_the_element(selector=self.receiver_module_setting_button) # Раскрваю "Получение поставок"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_warning) # Выбираю WARNING
+        BM(browser=self.browser).click_on_the_element(selector=self.decryption_module_setting_button) # Раскрваю "Криптографическая обработка данных"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_warning) # Выбираю WARNING
+        BM(browser=self.browser).click_on_the_element(selector=self.unzip_module_setting_button) # Раскрваю "Распаковки поставок"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_warning) # Выбираю WARNING
+        BM(browser=self.browser).click_on_the_element(selector=self.validator_module_setting_button) # Раскрваю "Валидация файлов"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_warning) # Выбираю WARNING
+        BM(browser=self.browser).click_on_the_element(selector=self.antivir_module_setting_button) # Раскрваю "Антивирусная проверка"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_warning) # Выбираю WARNING
+        BM(browser=self.browser).click_on_the_element(selector=self.checkSum_module_setting_button) # Раскрваю "Расчет контрольных сумм"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_warning) # Выбираю WARNING
+        BM(browser=self.browser).click_on_the_element(selector=self.publisher_module_setting_button) # Раскрваю "Публикация данных"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_warning) # Выбираю WARNING
+        BM(browser=self.browser).click_on_the_element(selector=self.cleaner_module_setting_button) # Раскрваю "Очистка каталога поставок"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_warning) # Выбираю WARNING
+        BM(browser=self.browser).click_on_the_element(selector=self.api_module_setting_button) # Раскрваю "API"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_warning) # Выбираю WARNING
+        BM(browser=self.browser).click_on_the_element(selector=self.notification_module_setting_button) # Раскрваю "Уведомления"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_warning) # Выбираю WARNING
+        # Проверка значений
+        BM(browser=self.browser).page_reload() # Обновление страницы
+        BM(browser=self.browser).checking_the_presence_of_an_element_on_the_page(selector=self.receiver_module_setting_button) # Проверяю загрузку страницы
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.receiver_module_setting_button, second_value=self.tetxt_type_warning, atribut='textContent')
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.decryption_module_setting_button, second_value=self.tetxt_type_warning, atribut='textContent')
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.unzip_module_setting_button, second_value=self.tetxt_type_warning, atribut='textContent')
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.validator_module_setting_button, second_value=self.tetxt_type_warning, atribut='textContent')
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.antivir_module_setting_button, second_value=self.tetxt_type_warning, atribut='textContent')
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.checkSum_module_setting_button, second_value=self.tetxt_type_warning, atribut='textContent')
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.publisher_module_setting_button, second_value=self.tetxt_type_warning, atribut='textContent')
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.cleaner_module_setting_button, second_value=self.tetxt_type_warning, atribut='textContent')
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.api_module_setting_button, second_value=self.tetxt_type_warning, atribut='textContent')
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.notification_module_setting_button, second_value=self.tetxt_type_warning, atribut='textContent')
+        # Возвращаю старые значения
+        BM(browser=self.browser).click_on_the_element(selector=self.receiver_module_setting_button) # Раскрваю "Получение поставок"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_debug) # Выбираю DEBUG
+        BM(browser=self.browser).click_on_the_element(selector=self.decryption_module_setting_button) # Раскрваю "Криптографическая обработка данных"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_debug) # Выбираю DEBUG
+        BM(browser=self.browser).click_on_the_element(selector=self.unzip_module_setting_button) # Раскрваю "Распаковки поставок"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_debug) # Выбираю DEBUG
+        BM(browser=self.browser).click_on_the_element(selector=self.validator_module_setting_button) # Раскрваю "Валидация файлов"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_debug) # Выбираю DEBUG
+        BM(browser=self.browser).click_on_the_element(selector=self.antivir_module_setting_button) # Раскрваю "Антивирусная проверка"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_debug) # Выбираю DEBUG
+        BM(browser=self.browser).click_on_the_element(selector=self.checkSum_module_setting_button) # Раскрваю "Расчет контрольных сумм"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_debug) # Выбираю DEBUG
+        BM(browser=self.browser).click_on_the_element(selector=self.publisher_module_setting_button) # Раскрваю "Публикация данных"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_debug) # Выбираю DEBUG
+        BM(browser=self.browser).click_on_the_element(selector=self.cleaner_module_setting_button) # Раскрваю "Очистка каталога поставок"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_debug) # Выбираю DEBUG
+        BM(browser=self.browser).click_on_the_element(selector=self.api_module_setting_button) # Раскрваю "API"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_debug) # Выбираю DEBUG
+        BM(browser=self.browser).click_on_the_element(selector=self.notification_module_setting_button) # Раскрваю "Уведомления"
+        BM(browser=self.browser).click_on_the_element(selector=self.type_debug) # Выбираю DEBUG
+
+
 
 
 # -------------------------------------------- Разработчики -----------------------------------------------
@@ -677,6 +730,62 @@ class developers:
 
 
 # -------------------------------------------- Роли -------------------------------------------------------
+class roles_pages:
+    # ЭЛЕМЕНТЫ
+    roles_link_pages = 'https://mpp-tst-mr1.star.lanit.ru/configuration/roles'                                                      # Страница "Роли"
+    name_input = '//*[@id="name-input"]'                                                                                            # Поле ввода Названия роли
+    description_input = '//*[@id="description-input"]'                                                                              # Поле ввода Описания роли
+    ldap_input = '//*[@id="ldapGroup-input"]'                                                                                       # Поле ввода Группа
+    save_button = "//*[text()='Сохранить']"                                                                                         # Поле "Сохранить" разработчика
+    exit_button = "//*[text()='Отменить']"                                                                                          # Поле "Отменить" разработчика
+    allert_save_text_xpath = '/html/body/div/div[1]/div/div'                                                                        # Поле всплывающего аллерта
+    roles_menu_item = '//*[@id="roles-menu-item"]'                                                                                  # Кнопка "Роли" в левом меню настроек
+
+    # ЗНАЧЕНИЯ
+    default_role_name = 'control'                                                                                                   # Дефолтное значение названия роли
+    default_role_description = 'Контролер эксплуатации'                                                                             # Дефолтное значение описания роли
+    test_role_name = 'test_role'                                                                                                    # Тестовое значение названия роли
+    test_role_description = 'test_description'                                                                                      # Тестовое значение описания роли
+
+
+    def __init__(self, browser) -> None:
+        self.browser = browser
+
+    def go_to_roles_page(self):
+        """Переход на страницу настроек"""
+        BM(browser=self.browser).go_to_the_page(link=self.roles_link_pages)
+
+    def crud_roles(self):
+        "Изменение роли и проверка"
+        #Редактирую Роль "control"
+        BM(browser=self.browser).click_on_the_element(selector=f"//*[text()='{self.default_role_name}']/..//*[@aria-label='Редактировать']")
+        BM(browser=self.browser).enter_text_in_the_element(selector=self.name_input, input_text=self.test_role_name)
+        BM(browser=self.browser).enter_text_in_the_element(selector=self.description_input, input_text=self.test_role_description)
+        BM(browser=self.browser).click_on_the_element(selector=self.ldap_input)
+        BM(browser=self.browser).click_on_the_element(selector='//body//ul/li[9]')
+        BM(browser=self.browser).click_on_the_element(selector=self.save_button)
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value="Роль успешно изменена") # Проверяю аллерт
+        BM(browser=self.browser).page_reload()
+        # Проверяю корректность отредактированных настроек
+        BM(browser=self.browser).checking_the_presence_of_an_element_on_the_page(selector=self.roles_menu_item) # Проверяю что страница загрузилась
+        BM(browser=self.browser).click_on_the_element(selector=f"//*[text()='{self.test_role_name}']/..//*[@aria-label='Редактировать']")
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.name_input, second_value=self.test_role_name, atribut='value')
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.description_input, second_value=self.test_role_description, atribut='value')
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.ldap_input, second_value='Test_Manual', atribut='textContent')
+        # Возвращаю стандартные настройки
+        BM(browser=self.browser).enter_text_in_the_element(selector=self.name_input, input_text=self.default_role_name)
+        BM(browser=self.browser).enter_text_in_the_element(selector=self.description_input, input_text=self.default_role_description)
+        BM(browser=self.browser).click_on_the_element(selector=self.ldap_input)
+        BM(browser=self.browser).click_on_the_element(selector='//body//ul/li[4]')
+        BM(browser=self.browser).click_on_the_element(selector=self.save_button)
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.allert_save_text_xpath , second_value="Роль успешно изменена") # Проверяю аллерт
+        BM(browser=self.browser).page_reload()
+        # Проверяю корректность отредактированных настроек
+        BM(browser=self.browser).checking_the_presence_of_an_element_on_the_page(selector=self.roles_menu_item) # Проверяю что страница загрузилась
+        BM(browser=self.browser).click_on_the_element(selector=f"//*[text()='{self.default_role_name}']/..//*[@aria-label='Редактировать']")
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.name_input, second_value=self.default_role_name, atribut='value')
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.description_input, second_value=self.default_role_description, atribut='value')
+        BM(browser=self.browser).get_element_text_and_compare_with_custom_value(selector=self.ldap_input, second_value='Контролер эксплуатации', atribut='textContent')
 
 
 # -------------------------------------------- Привелегии -------------------------------------------------
