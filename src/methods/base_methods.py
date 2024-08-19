@@ -1,6 +1,5 @@
 """Базовые методы"""
 import time
-import pyautogui
 import html
 from selenium.webdriver.common.by import By
 from selenium.webdriver import Remote
