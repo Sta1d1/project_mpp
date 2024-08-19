@@ -1,6 +1,5 @@
 """Тестирование страницы <Отказоустойчивость>"""
 import time
-import pyautogui
 import allure
 from selenium.webdriver import Remote
 from selenium.webdriver.common.by import By
